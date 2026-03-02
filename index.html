@@ -28,139 +28,135 @@
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #fdf2f8; 
+            background-color: #fff0f5; 
+            background-image: radial-gradient(#fbcfe8 1px, transparent 1px);
+            background-size: 20px 20px;
         }
         .marquee-container { 
-            overflow: hidden; 
-            white-space: nowrap; 
-            width: 100%; 
-            background: #fbcfe8; 
-            color: #db2777; 
-            padding: 10px 0; 
-            font-weight: bold; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden; white-space: nowrap; width: 100%; 
+            background: linear-gradient(90deg, #fce7f3, #fbcfe8, #fce7f3); 
+            color: #db2777; padding: 12px 0; font-weight: bold; 
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
+            border-bottom: 2px dashed #f9a8d4;
         }
-        .marquee-content { 
-            display: inline-block; 
-            animation: marquee 15s linear infinite; 
-        }
-        @keyframes marquee { 
-            0% { transform: translateX(100vw); } 
-            100% { transform: translateX(-100%); } 
-        }
-        .card-hover:hover { 
-            transform: translateY(-3px); 
-            transition: all 0.3s ease; 
-        }
-        .hide { 
-            display: none !important; 
-        }
-        /* Scrollbar สีพาสเทล */
+        .marquee-content { display: inline-block; animation: marquee 15s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        
+        .hide { display: none !important; }
+        
+        /* สกอร์บาร์น่ารักๆ */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fdf2f8; }
+        ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #f9a8d4; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #f472b6; }
+
+        /* กล่องข้อความที่คงรูปแบบเป๊ะๆ */
+        .cute-text-box {
+            white-space: pre-wrap; /* หัวใจสำคัญที่ทำให้ข้อความไม่เสียทรง */
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body class="text-gray-800 min-h-screen flex flex-col relative">
 
     <div class="marquee-container flex items-center">
-        <svg class="w-5 h-5 ml-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <svg class="w-5 h-5 ml-4 mr-2 flex-shrink-0 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"></path>
         </svg>
         <div class="marquee-content" id="bannerText">ยินดีต้อนรับสู่ร้านของเรา...</div>
     </div>
 
-    <header class="text-center py-10">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-pink-600 mb-2 drop-shadow-sm" id="mainTitle">เมนูสินค้าและบริการ</h1>
-        <p class="text-pink-400 font-medium text-sm">by คุณโซ</p>
+    <header class="text-center py-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-400 mb-3 drop-shadow-sm" id="mainTitle">บริการของเรา</h1>
+        <div class="inline-block bg-pink-100 text-pink-500 px-4 py-1 rounded-full text-sm font-bold shadow-sm">by คุณโซ 🎀</div>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 pb-20 max-w-5xl">
+    <main class="flex-grow container mx-auto px-4 pb-20 max-w-6xl">
         <div id="loading" class="text-center text-pink-400 py-10 font-bold flex justify-center items-center gap-2">
-            <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+            <svg class="animate-spin h-6 w-6" viewBox="0 0 24 24" fill="none">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            กำลังโหลดข้อมูล...
+            กำลังโหลดข้อมูลน่ารักๆ...
         </div>
-        <div id="sellersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hide"></div>
+        
+        <div id="sellersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 hide"></div>
     </main>
 
-    <footer class="mt-auto py-4 text-center text-pink-300 text-xs">
-        <button onclick="toggleAdminPanel()" class="hover:text-pink-500 transition-colors flex items-center justify-center w-full gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <footer class="mt-auto py-6 text-center text-pink-400 text-sm font-medium bg-white/50 backdrop-blur-sm border-t border-pink-100">
+        <button onclick="toggleAdminPanel()" class="hover:text-pink-600 transition-colors flex items-center justify-center w-full gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
-            ผู้ดูแลระบบ
+            ตั้งค่าผู้ดูแลระบบ
         </button>
     </footer>
 
-    <div id="adminModal" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-50 flex justify-center items-center hide p-4">
-        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border-4 border-pink-100">
-            <div class="bg-pink-100 p-4 flex justify-between items-center border-b border-pink-200">
+    <div id="adminModal" class="fixed inset-0 bg-pink-900/40 backdrop-blur-md z-50 flex justify-center items-center hide p-4">
+        <div class="bg-white rounded-[2rem] w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border-4 border-pink-200">
+            <div class="bg-gradient-to-r from-pink-100 to-pink-50 p-5 flex justify-between items-center border-b border-pink-200">
                 <h2 class="text-xl font-bold text-pink-600 flex items-center gap-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
                     </svg>
-                    ตั้งค่าระบบหลังบ้าน
+                    หลังบ้านคนสวย
                 </h2>
-                <button onclick="toggleAdminPanel()" class="text-pink-400 hover:text-pink-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <button onclick="toggleAdminPanel()" class="bg-white text-pink-400 hover:text-pink-600 hover:bg-pink-100 p-2 rounded-full transition-all shadow-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
             
-            <div id="loginState" class="p-8 text-center">
-                <p class="text-pink-500 mb-4 font-bold">กรุณาใส่รหัสผ่านแอดมิน</p>
-                <input type="password" id="adminPass" class="w-full max-w-xs border-2 border-pink-200 rounded-xl px-4 py-2 focus:outline-none focus:border-pink-400 mb-4 text-center">
-                <button onclick="checkLoginLocal()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-xl transition shadow-md w-full max-w-xs">เข้าสู่ระบบ</button>
+            <div id="loginState" class="p-10 text-center flex flex-col items-center justify-center flex-grow">
+                <div class="bg-pink-100 p-4 rounded-full mb-4">
+                    <svg class="w-10 h-10 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <p class="text-pink-600 mb-6 font-bold text-lg">ใส่รหัสผ่านเพื่อเข้าสู่ระบบ</p>
+                <input type="password" id="adminPass" class="w-full max-w-sm border-2 border-pink-200 rounded-2xl px-5 py-3 focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 mb-6 text-center text-lg transition-all shadow-inner" placeholder="••••••">
+                <button onclick="checkLoginLocal()" class="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3 px-10 rounded-2xl transition shadow-lg shadow-pink-200/50 transform hover:scale-105">เข้าสู่ระบบ 🌸</button>
             </div>
 
-            <div id="dashboardState" class="p-6 overflow-y-auto flex-grow hide bg-pink-50/30">
-                
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100 mb-6">
-                    <h3 class="font-bold text-pink-600 mb-3 border-b border-pink-50 pb-2">ตั้งค่าเว็บไซต์</h3>
-                    <div class="space-y-3 text-sm">
-                        <div>
-                            <label class="block text-gray-600 mb-1">ชื่อเว็บ (Title):</label>
-                            <input type="text" id="configTitle" class="w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:border-pink-400">
-                        </div>
-                        <div>
-                            <label class="block text-gray-600 mb-1">ไอคอนเว็บ (Favicon URL):</label>
-                            <input type="text" id="configFavicon" class="w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:border-pink-400">
-                        </div>
-                        <div>
-                            <label class="block text-gray-600 mb-1">ป้ายเลื่อนโปรโมท (Banner):</label>
-                            <input type="text" id="configBanner" class="w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:border-pink-400">
-                        </div>
+            <div id="dashboardState" class="p-6 overflow-y-auto flex-grow hide bg-pink-50/50">
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-pink-100 mb-6 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-16 h-16 bg-pink-100 rounded-full opacity-50"></div>
+                    <h3 class="font-bold text-lg text-pink-600 mb-4 border-b-2 border-pink-50 pb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        ตั้งค่าเว็บไซต์
+                    </h3>
+                    <div class="space-y-4 text-sm relative z-10">
+                        <div><label class="block text-gray-600 font-bold mb-1.5">ชื่อเว็บ (Title):</label><input type="text" id="configTitle" class="w-full border-2 border-pink-100 rounded-xl p-3 focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-50 transition-all bg-gray-50/50"></div>
+                        <div><label class="block text-gray-600 font-bold mb-1.5">ไอคอนเว็บ (Favicon URL):</label><input type="text" id="configFavicon" class="w-full border-2 border-pink-100 rounded-xl p-3 focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-50 transition-all bg-gray-50/50"></div>
+                        <div><label class="block text-gray-600 font-bold mb-1.5">ป้ายวิ่งโปรโมท (Banner):</label><input type="text" id="configBanner" class="w-full border-2 border-pink-100 rounded-xl p-3 focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-50 transition-all bg-gray-50/50"></div>
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100">
-                    <div class="flex justify-between items-center mb-3 border-b border-pink-50 pb-2">
-                        <h3 class="font-bold text-pink-600">ช่องทางการติดต่อและบริการ</h3>
-                        <button onclick="addSellerForm()" class="text-xs bg-pink-100 text-pink-600 hover:bg-pink-200 px-3 py-1 rounded-full font-bold flex items-center gap-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                            เพิ่ม
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-pink-100">
+                    <div class="flex justify-between items-center mb-4 border-b-2 border-pink-50 pb-3">
+                        <h3 class="font-bold text-lg text-pink-600 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            รายการสินค้าและบริการ
+                        </h3>
+                        <button onclick="addSellerForm()" class="text-sm bg-gradient-to-r from-pink-400 to-pink-500 text-white hover:from-pink-500 hover:to-pink-600 px-4 py-2 rounded-xl font-bold flex items-center gap-1 shadow-md transform hover:scale-105 transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            เพิ่มรายการ
                         </button>
                     </div>
-                    <div id="adminSellersList" class="space-y-4"></div>
+                    <div id="adminSellersList" class="space-y-6"></div>
                 </div>
             </div>
 
-            <div id="adminFooter" class="bg-pink-50 p-4 border-t border-pink-200 flex justify-end gap-3 hide">
-                <span id="saveStatus" class="text-sm font-bold mt-2"></span>
-                <button onclick="saveData()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-xl transition shadow-md flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
-                    บันทึกข้อมูล
+            <div id="adminFooter" class="bg-white p-5 border-t border-pink-100 flex justify-between items-center hide rounded-b-[2rem]">
+                <span id="saveStatus" class="text-sm font-bold text-pink-500"></span>
+                <button onclick="saveData()" class="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-2xl transition shadow-lg shadow-pink-200 flex items-center gap-2 transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+                    บันทึกข้อมูล ✨
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // เชื่อมต่อกับ Google Apps Script ที่คุณโซสร้างไว้
+        // ❌ นำ URL จาก Google Apps Script มาใส่ตรงนี้ ❌
         const API_URL = "https://script.google.com/macros/s/AKfycbwZAm8bJclCdszoGxgBwpmPfJyr3omxWfGdNmFnjEpdjaoPrGcsQ9I8ZKXeTNShNqW7/exec"; 
         
         let appData = { settings: {}, sellers: [] };
@@ -179,10 +175,10 @@
                     appData = result;
                     renderPublicPage();
                 } else {
-                    document.getElementById('loading').innerHTML = "เกิดข้อผิดพลาดในการโหลดข้อมูล";
+                    document.getElementById('loading').innerHTML = "เกิดข้อผิดพลาดในการโหลดข้อมูล 🥲";
                 }
             } catch (err) {
-                document.getElementById('loading').innerHTML = "ไม่สามารถเชื่อมต่อฐานข้อมูลได้";
+                document.getElementById('loading').innerHTML = "ไม่สามารถเชื่อมต่อฐานข้อมูลได้ 🥲";
                 console.error(err);
             }
         };
@@ -192,7 +188,6 @@
             document.getElementById('loading').classList.add('hide');
             document.getElementById('sellersGrid').classList.remove('hide');
 
-            // อัปเดตข้อมูลเว็บ
             document.title = appData.settings.Title || "บริการร้านค้า";
             document.getElementById('mainTitle').innerText = appData.settings.Title || "บริการร้านค้า";
             if (appData.settings.Favicon) {
@@ -200,42 +195,45 @@
             }
             document.getElementById('bannerText').innerText = appData.settings.Banner || "ยินดีต้อนรับ";
 
-            // อัปเดตรายการแม่ค้า
             const grid = document.getElementById('sellersGrid');
             grid.innerHTML = "";
             
             appData.sellers.forEach(seller => {
-                const servicesArray = seller.services ? seller.services.split('\n').filter(s => s.trim() !== '') : [];
-                let servicesHTML = servicesArray.map(s => `
-                    <li class="flex items-start gap-2 text-sm">
-                        <svg class="w-4 h-4 text-pink-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        <span class="text-gray-600">${s}</span>
-                    </li>`).join('');
-                
-                if(servicesHTML === "") servicesHTML = `<li class="text-gray-400 text-sm italic">ไม่มีระบุ</li>`;
+                // หลีกเลี่ยง XSS นิดหน่อย แต่ปล่อยให้เว้นวรรคทำงาน
+                const safeServices = seller.services ? seller.services.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
+
+                // สร้างบล็อกข้อความ โดยใช้คลาส cute-text-box (whitespace-pre-wrap) เพื่อคงการเว้นวรรค
+                let servicesHTML = safeServices
+                    ? `<div class="cute-text-box text-[14px] text-gray-700 leading-relaxed bg-pink-50/70 p-5 rounded-2xl border border-pink-100 shadow-inner overflow-x-auto">${safeServices}</div>`
+                    : `<div class="text-pink-300 text-sm italic text-center py-4 bg-pink-50/50 rounded-2xl">ยังไม่มีข้อมูลบริการงับ 🥺</div>`;
 
                 grid.innerHTML += `
-                    <div class="bg-white rounded-3xl p-6 shadow-md shadow-pink-100 border border-pink-100 card-hover flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-4 border-b border-pink-50 pb-4">
-                            <div class="bg-pink-100 text-pink-500 p-2 rounded-2xl">
-                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                    <div class="bg-white rounded-[2rem] p-6 shadow-xl shadow-pink-100/40 border-[3px] border-white hover:border-pink-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-200/50 transition-all duration-300 flex flex-col h-full relative group">
+                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-pink-100 to-pink-50 rounded-full opacity-50 z-0 group-hover:scale-110 transition-transform duration-500"></div>
+
+                        <div class="flex items-center gap-4 mb-5 border-b-2 border-pink-50 pb-5 relative z-10">
+                            <div class="bg-gradient-to-br from-pink-200 to-pink-300 text-white p-3.5 rounded-2xl shadow-md">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
                             </div>
                             <div class="flex-grow overflow-hidden">
-                                <p class="text-xs text-pink-400 font-bold uppercase">Facebook</p>
-                                <h3 class="text-lg font-bold text-gray-800 truncate">${seller.name}</h3>
+                                <p class="text-[10px] text-pink-400 font-extrabold uppercase tracking-widest mb-1">Contact</p>
+                                <h3 class="text-xl font-extrabold text-gray-800 truncate">${seller.name}</h3>
                             </div>
-                            <button onclick="copyName('${seller.name}')" title="คัดลอกชื่อ" class="bg-pink-50 hover:bg-pink-100 text-pink-500 p-2 rounded-xl transition-colors">
+                            <button onclick="copyName('${seller.name}')" title="คัดลอกชื่อ" class="bg-white border-2 border-pink-100 hover:bg-pink-50 hover:border-pink-300 text-pink-500 p-2.5 rounded-xl transition-all shadow-sm transform hover:scale-105">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                             </button>
                         </div>
                         
-                        <div class="flex-grow mb-5">
-                            <p class="text-xs font-bold text-pink-500 mb-2 bg-pink-50 inline-block px-2 py-1 rounded-lg">บริการของเรา</p>
-                            <ul class="space-y-2 mt-2">${servicesHTML}</ul>
+                        <div class="flex-grow mb-6 relative z-10">
+                            <div class="flex items-center gap-2 mb-3 px-1">
+                                <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                <p class="text-sm font-bold text-pink-500">รายละเอียดสินค้า & ราคา</p>
+                            </div>
+                            ${servicesHTML}
                         </div>
 
-                        <a href="${seller.fblink}" target="_blank" class="block w-full text-center bg-pink-400 hover:bg-pink-500 text-white font-bold py-3 rounded-2xl transition-colors shadow-sm">
-                            ติดต่อแม่ค้า (Facebook)
+                        <a href="${seller.fblink}" target="_blank" class="block w-full text-center bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg shadow-pink-200 hover:shadow-pink-400/50 relative z-10 transform hover:scale-[1.02] active:scale-95">
+                            ติดต่อสั่งซื้อที่นี่ 🛒
                         </a>
                     </div>
                 `;
@@ -244,11 +242,10 @@
 
         function copyName(name) {
             navigator.clipboard.writeText(name).then(() => {
-                alert("คัดลอกชื่อ: " + name + " เรียบร้อยแล้วครับ");
+                alert("คัดลอกชื่อ: " + name + " เรียบร้อยแล้วค่ะ 🌸");
             });
         }
 
-        // ดึงชื่อจากลิงก์ Facebook อัตโนมัติ
         function extractFBName(inputElement, targetId) {
             let url = inputElement.value;
             let match = url.match(/(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:profile\.php\?id=)?([a-zA-Z0-9.]+)/i);
@@ -300,23 +297,25 @@
         function appendSellerForm(id, name, fblink, services, index) {
             const list = document.getElementById('adminSellersList');
             const html = `
-                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 relative seller-item" data-id="${id}">
-                    <button onclick="this.parentElement.remove()" class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+                <div class="bg-pink-50/50 p-5 rounded-2xl border-2 border-pink-100 relative seller-item shadow-sm" data-id="${id}">
+                    <button onclick="this.parentElement.remove()" class="absolute top-3 right-3 text-pink-300 hover:text-red-500 bg-white p-1.5 rounded-full shadow-sm hover:shadow-md transition-all">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                     </button>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                         <div>
-                            <label class="block text-xs text-gray-500 mb-1">ลิงก์ Facebook:</label>
-                            <input type="text" class="seller-fb w-full border border-gray-200 rounded p-2 text-sm focus:outline-none focus:border-pink-400" value="${fblink}" oninput="extractFBName(this, 'seller-name-${index}')" placeholder="https://facebook.com/username">
+                            <label class="block text-xs font-bold text-pink-500 mb-1.5">ลิงก์ Facebook:</label>
+                            <input type="text" class="seller-fb w-full border-2 border-white rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-300 focus:ring-2 focus:ring-pink-100 shadow-sm" value="${fblink}" oninput="extractFBName(this, 'seller-name-${index}')" placeholder="https://facebook.com/username">
                         </div>
                         <div>
-                            <label class="block text-xs text-gray-500 mb-1">ชื่อ (ดึงอัตโนมัติ / แก้ไขได้):</label>
-                            <input type="text" id="seller-name-${index}" class="seller-name w-full border border-gray-200 rounded p-2 text-sm focus:outline-none focus:border-pink-400" value="${name}" placeholder="ชื่อแม่ค้า">
+                            <label class="block text-xs font-bold text-pink-500 mb-1.5">ชื่อแสดงผล:</label>
+                            <input type="text" id="seller-name-${index}" class="seller-name w-full border-2 border-white rounded-xl p-2.5 text-sm focus:outline-none focus:border-pink-300 focus:ring-2 focus:ring-pink-100 shadow-sm" value="${name}" placeholder="ชื่อแม่ค้า">
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <label class="block text-xs text-gray-500 mb-1">บริการ (ขึ้นบรรทัดใหม่เพื่อแยกข้อ):</label>
-                        <textarea class="seller-services w-full border border-gray-200 rounded p-2 text-sm focus:outline-none focus:border-pink-400" rows="3" placeholder="จัดส่งฟรี\nให้คำปรึกษา">${services}</textarea>
+                    <div class="mt-4">
+                        <label class="block text-xs font-bold text-pink-500 mb-1.5 flex justify-between">
+                            <span>รายการสินค้า (วางข้อความจัดหน้ามาได้เลย!):</span>
+                        </label>
+                        <textarea class="seller-services w-full border-2 border-white rounded-xl p-3 text-sm focus:outline-none focus:border-pink-300 focus:ring-2 focus:ring-pink-100 shadow-sm font-mono leading-relaxed" rows="10" placeholder="วางข้อความเมนู ราคา แบบเว้นวรรคได้เลย...">${services}</textarea>
                     </div>
                 </div>
             `;
@@ -330,8 +329,8 @@
 
         async function saveData() {
             const statusText = document.getElementById('saveStatus');
-            statusText.innerText = "กำลังบันทึก...";
-            statusText.className = "text-sm font-bold mt-2 text-yellow-600";
+            statusText.innerText = "กำลังเซฟน้า... ⏳";
+            statusText.className = "text-sm font-bold text-yellow-500 animate-pulse";
 
             const newSettings = {
                 Title: document.getElementById('configTitle').value,
@@ -363,8 +362,8 @@
                 const result = await res.json();
 
                 if (result.success) {
-                    statusText.innerText = "บันทึกสำเร็จ!";
-                    statusText.className = "text-sm font-bold mt-2 text-green-600";
+                    statusText.innerText = "เซฟสำเร็จแล้ว! ✨";
+                    statusText.className = "text-sm font-bold text-green-500";
                     
                     appData.settings = newSettings;
                     appData.sellers = newSellers;
@@ -372,12 +371,12 @@
                     
                     setTimeout(() => { toggleAdminPanel(); }, 1500);
                 } else {
-                    statusText.innerText = "ผิดพลาด: " + (result.error || "รหัสผ่านผิด");
-                    statusText.className = "text-sm font-bold mt-2 text-red-600";
+                    statusText.innerText = "รหัสผ่านผิด หรือเกิดข้อผิดพลาด 🥺";
+                    statusText.className = "text-sm font-bold text-red-500";
                 }
             } catch (err) {
-                statusText.innerText = "เกิดข้อผิดพลาดในการเชื่อมต่อ";
-                statusText.className = "text-sm font-bold mt-2 text-red-600";
+                statusText.innerText = "เน็ตมีปัญหานิดหน่อย ลองใหม่นะ 🥺";
+                statusText.className = "text-sm font-bold text-red-500";
             }
         }
     </script>
