@@ -97,7 +97,7 @@
                     <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
                     </svg>
-                    หลังบ้านคนสวย
+                    ระบบหลังบ้าน
                 </h2>
                 <button onclick="toggleAdminPanel()" class="bg-white text-pink-400 hover:text-pink-600 hover:bg-pink-100 p-2 rounded-full transition-all shadow-sm">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -193,11 +193,18 @@
             const grid = document.getElementById('sellersGrid');
             grid.innerHTML = "";
             
-            appData.sellers.forEach(seller => {
+            appData.sellers.forEach((seller, index) => {
                 const safeServices = seller.services ? seller.services.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
 
+                // เพิ่มโครงสร้างสำหรับปุ่มดูเพิ่มเติม
                 let servicesHTML = safeServices
-                    ? `<div class="cute-text-box text-[14px] text-gray-700 leading-relaxed bg-pink-50/70 p-5 rounded-2xl border border-pink-100 shadow-inner overflow-x-auto">${safeServices}</div>`
+                    ? `<div class="relative bg-pink-50/70 rounded-2xl border border-pink-100 shadow-inner">
+                            <div id="text-box-${index}" class="cute-text-box text-[14px] text-gray-700 leading-relaxed p-5 overflow-hidden transition-all duration-300 max-h-[160px]">${safeServices}</div>
+                            <div id="fade-${index}" class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#fdf2f8]/90 to-transparent pointer-events-none hide"></div>
+                       </div>
+                       <button id="btn-more-${index}" onclick="toggleReadMore(this, 'text-box-${index}', 'fade-${index}')" class="w-full text-center text-xs font-bold text-pink-400 hover:text-pink-600 mt-2 transition-colors hide">
+                            ดูเพิ่มเติม ▼
+                       </button>`
                     : `<div class="text-pink-300 text-sm italic text-center py-4 bg-pink-50/50 rounded-2xl">ยังไม่มีข้อมูลบริการ</div>`;
 
                 grid.innerHTML += `
@@ -231,6 +238,43 @@
                     </div>
                 `;
             });
+
+            // ตรวจสอบความยาวข้อความหลังจากเรนเดอร์ เพื่อเปิดใช้งานปุ่มดูเพิ่มเติม
+            setTimeout(() => {
+                appData.sellers.forEach((seller, index) => {
+                    const box = document.getElementById(`text-box-${index}`);
+                    const btn = document.getElementById(`btn-more-${index}`);
+                    const fade = document.getElementById(`fade-${index}`);
+                    
+                    if (box && btn && fade) {
+                        // ถ้าข้อความมีความยาวมากกว่ากล่องที่กำหนดไว้
+                        if (box.scrollHeight > box.clientHeight) {
+                            btn.classList.remove('hide');
+                            fade.classList.remove('hide');
+                        } else {
+                            box.classList.remove('max-h-[160px]');
+                        }
+                    }
+                });
+            }, 100);
+        }
+
+        // ฟังก์ชันสลับแสดง/ซ่อนข้อความเพิ่มเติม
+        function toggleReadMore(btn, boxId, fadeId) {
+            const box = document.getElementById(boxId);
+            const fade = document.getElementById(fadeId);
+            
+            if (box.classList.contains('max-h-[160px]')) {
+                // ขยายเต็ม
+                box.classList.remove('max-h-[160px]');
+                fade.classList.add('hide');
+                btn.innerHTML = 'ย่อข้อความ ▲';
+            } else {
+                // ย่อกลับ
+                box.classList.add('max-h-[160px]');
+                fade.classList.remove('hide');
+                btn.innerHTML = 'ดูเพิ่มเติม ▼';
+            }
         }
 
         function copyName(name) {
